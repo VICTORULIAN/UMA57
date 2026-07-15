@@ -1,0 +1,7 @@
+Coloque aqui os arquivos desta pessoa:
+
+1) video.mp4   -> o video que vai aparecer no site (obrigatorio)
+2) capa.jpg    -> uma foto de capa/thumbnail, formato paisagem 16:9 (opcional)
+
+Nao precisa mexer em nenhum codigo. Assim que os arquivos estiverem
+com esses nomes exatos dentro desta pasta, o site exibe automaticamente.

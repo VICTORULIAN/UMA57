@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UMADEB 57 · Encontro Setorial · AD Belém 57</title>
+<meta name="description" content="Encontro Setorial UMADEB 57 — 14, 15 e 16 de Agosto, AD Belém 57. Três noites de louvor e Palavra.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* ---- paleta extraída do cartaz ---- */
+    --bg-void:      #0A0B1F;   /* base mais escura, rodapé do cartaz */
+    --bg-navy:      #161B3D;   /* azul marinho das faixas de data/horário */
+    --bg-navy-light:#232A56;   /* marinho mais claro, cards / hover */
+    --violet:       #7C2FB0;   /* roxo do topo do cartaz */
+    --magenta:      #C13FD6;   /* rosa-magenta do brilho de palco */
+    --lavender:      #E6CBFF;  /* brilho do título UMADEB */
+    --flame:         #FF7A45;  /* laranja da chama do brasão AD */
+    --white:         #FFFFFF;
+    --ink-muted:     #B7BEE0;  /* texto secundário sobre fundo escuro */
+
+    --font-display: 'Anton', sans-serif;
+    --font-body: 'Manrope', sans-serif;
+
+    --radius-lg: 28px;
+    --radius-md: 18px;
+    --radius-sm: 10px;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--bg-void);
+    color:var(--white);
+    font-family:var(--font-body);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,video{ max-width:100%; display:block; }
+  a{ color:inherit; text-decoration:none; }
+  ul{ list-style:none; }
+  .container{
+    width:100%;
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:12.5px;
+    font-weight:800;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--lavender);
+  }
+  .eyebrow .flame{ width:14px; height:14px; flex:none; }
+  h1,h2,h3{ font-family:var(--font-display); font-weight:400; text-transform:uppercase; letter-spacing:.01em; }
+  .section-title{
+    font-size:clamp(34px,6vw,58px);
+    line-height:.96;
+    margin:14px 0 16px;
+  }
+  .section-lede{
+    color:var(--ink-muted);
+    font-size:16px;
+    line-height:1.65;
+    max-width:560px;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:15px 26px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:14.5px;
+    letter-spacing:.02em;
+    cursor:pointer;
+    border:1.5px solid transparent;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+  }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--flame),#ff5f9a);
+    color:var(--bg-void);
+    box-shadow:0 14px 30px -10px rgba(255,122,69,.55);
+  }
+  .btn-primary:hover{ box-shadow:0 18px 36px -8px rgba(255,122,69,.7); }
+  .btn-ghost{
+    background:rgba(255,255,255,.06);
+    border-color:rgba(255,255,255,.22);
+    color:var(--white);
+    backdrop-filter:blur(6px);
+  }
+  .btn-ghost:hover{ background:rgba(255,255,255,.13); }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    padding:18px 0;
+    transition:background .3s ease, padding .3s ease, backdrop-filter .3s ease;
+  }
+  header.scrolled{
+    background:rgba(10,11,31,.82);
+    backdrop-filter:blur(14px);
+    padding:12px 0;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  nav{ display:flex; align-items:center; justify-content:space-between; }
+  .brand{ display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.04em; font-size:15px; }
+  .brand .mark{ width:34px; height:34px; }
+  .nav-links{ display:flex; gap:34px; font-size:14px; font-weight:600; color:var(--ink-muted); }
+  .nav-links a:hover{ color:var(--white); }
+  .nav-cta{ display:flex; align-items:center; gap:18px; }
+  .nav-toggle{ display:none; background:none; border:0; color:var(--white); font-size:26px; cursor:pointer; }
+
+  @media(max-width:840px){
+    .nav-links{
+      position:fixed; inset:0 0 auto auto; top:0; height:100vh; width:78vw; max-width:340px;
+      background:var(--bg-navy); flex-direction:column; justify-content:center; align-items:flex-start;
+      gap:26px; padding:0 40px; transform:translateX(100%); transition:transform .4s cubic-bezier(.65,0,.35,1);
+      font-size:18px; z-index:99;
+    }
+    .nav-links.open{ transform:translateX(0); }
+    .nav-toggle{ display:block; z-index:101; }
+    .nav-cta .btn-ghost{ display:none; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding:150px 0 90px;
+    background:
+      radial-gradient(ellipse 900px 600px at 18% -8%, rgba(124,47,176,.85), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 85% 8%, rgba(193,63,214,.55), transparent 55%),
+      linear-gradient(180deg, #241243 0%, #170F35 22%, var(--bg-navy) 55%, var(--bg-void) 100%);
+    overflow:hidden;
+  }
+  .hero::before, .hero::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    filter:blur(90px);
+    opacity:.55;
+    pointer-events:none;
+    animation:drift 16s ease-in-out infinite alternate;
+  }
+  .hero::before{
+    width:480px; height:480px; background:var(--magenta);
+    top:-120px; left:-100px;
+  }
+  .hero::after{
+    width:420px; height:420px; background:var(--flame);
+    bottom:-140px; right:-80px; opacity:.28;
+    animation-duration:20s;
+  }
+  @keyframes drift{
+    from{ transform:translate(0,0) scale(1); }
+    to{ transform:translate(40px,50px) scale(1.12); }
+  }
+  .hero-inner{ position:relative; z-index:2; text-align:center; margin:0 auto; }
+  .hero .eyebrow{ justify-content:center; width:100%; }
+  .hero h1{
+    font-family:var(--font-display);
+    font-size:clamp(76px,17vw,168px);
+    line-height:.86;
+    margin:18px 0 6px;
+    background:linear-gradient(180deg,#FFFFFF 0%, var(--lavender) 55%, #b98af0 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    text-shadow:0 0 70px rgba(230,203,255,.45);
+    letter-spacing:.01em;
+  }
+  .hero .subtitle{
+    font-family:var(--font-display);
+    font-size:clamp(15px,2.6vw,22px);
+    letter-spacing:.32em;
+    color:var(--white);
+    opacity:.9;
+  }
+  .hero-badges{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:12px;
+    margin:34px 0 20px;
+  }
+  .pill{
+    background:var(--bg-navy);
+    border:1px solid rgba(255,255,255,.12);
+    padding:12px 26px;
+    border-radius:999px;
+    font-weight:800;
+    font-size:15px;
+    letter-spacing:.03em;
+    box-shadow:0 10px 24px -12px rgba(0,0,0,.6);
+  }
+  .pill.date{ font-size:17px; }
+  .schedule-row{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:8px 22px;
+    color:var(--ink-muted); font-weight:700; font-size:14px; letter-spacing:.05em; margin-bottom:36px;
+  }
+  .schedule-row b{ color:var(--white); }
+  .hero-ctas{ display:flex; flex-wrap:wrap; justify-content:center; gap:14px; margin-bottom:56px; }
+
+  .countdown{
+    display:flex; justify-content:center; gap:14px; flex-wrap:wrap;
+  }
+  .countdown .box{
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.14);
+    backdrop-filter:blur(10px);
+    border-radius:var(--radius-sm);
+    padding:16px 20px;
+    min-width:82px;
+    text-align:center;
+  }
+  .countdown .num{ font-family:var(--font-display); font-size:32px; color:var(--white); }
+  .countdown .lbl{ font-size:10.5px; letter-spacing:.18em; color:var(--ink-muted); font-weight:700; margin-top:4px; }
+
+  .scroll-cue{
+    position:absolute; bottom:26px; left:50%; transform:translateX(-50%);
+    width:22px; height:36px; border:2px solid rgba(255,255,255,.4); border-radius:12px;
+    z-index:2;
+  }
+  .scroll-cue::before{
+    content:""; position:absolute; top:6px; left:50%; width:4px; height:8px; background:var(--white);
+    border-radius:2px; transform:translateX(-50%); animation:scrollcue 1.6s ease infinite;
+  }
+  @keyframes scrollcue{ 0%{opacity:1; top:6px;} 100%{opacity:0; top:16px;} }
+
+  /* ---------- FLAME DIVIDER (elemento assinatura) ---------- */
+  .flame-divider{
+    display:flex; align-items:center; gap:16px;
+    margin:0 0 46px;
+  }
+  .flame-divider .line{ flex:1; height:1px; background:linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent); }
+  .flame-divider svg{ width:22px; height:22px; flex:none; animation:flicker 2.4s ease-in-out infinite; }
+  @keyframes flicker{ 0%,100%{ opacity:1; transform:scale(1);} 50%{ opacity:.7; transform:scale(.92);} }
+
+  /* ---------- SECTIONS ---------- */
+  section{ padding:100px 0; position:relative; }
+  .section-head{ text-align:center; margin-bottom:56px; }
+  .section-head .eyebrow{ justify-content:center; width:100%; }
+  .section-head .section-lede{ margin:0 auto; text-align:center; }
+
+  /* Programação */
+  #programacao{ background:linear-gradient(180deg, var(--bg-void), #0d0f2c); }
+  .prog-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  @media(max-width:900px){ .prog-grid{ grid-template-columns:1fr; } }
+  .prog-card{
+    background:linear-gradient(160deg, var(--bg-navy-light), var(--bg-navy) 70%);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:var(--radius-md);
+    padding:32px 26px;
+    position:relative;
+    overflow:hidden;
+    transition:transform .3s ease, border-color .3s ease;
+  }
+  .prog-card:hover{ transform:translateY(-6px); border-color:rgba(230,203,255,.35); }
+  .prog-card::after{
+    content:""; position:absolute; width:180px; height:180px; border-radius:50%;
+    background:radial-gradient(circle, rgba(193,63,214,.35), transparent 70%);
+    top:-70px; right:-70px; pointer-events:none;
+  }
+  .prog-day{ font-size:12.5px; font-weight:800; letter-spacing:.16em; color:var(--flame); text-transform:uppercase; }
+  .prog-date{ font-family:var(--font-display); font-size:30px; margin:10px 0 2px; }
+  .prog-time{ color:var(--lavender); font-weight:700; font-size:14px; margin-bottom:14px; }
+  .prog-desc{ color:var(--ink-muted); font-size:14.5px; line-height:1.6; }
+
+  /* Preletores / Cantores - video cards */
+  .people-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px; }
+  @media(max-width:900px){ .people-grid{ grid-template-columns:1fr; max-width:420px; margin:0 auto; } }
+
+  .person-card{
+    background:var(--bg-navy);
+    border-radius:var(--radius-md);
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.08);
+    transition:transform .35s ease, box-shadow .35s ease;
+  }
+  .person-card:hover{ transform:translateY(-6px); box-shadow:0 24px 50px -20px rgba(0,0,0,.7); }
+
+  .video-frame{
+    position:relative;
+    aspect-ratio:16/10;
+    background:linear-gradient(135deg,var(--violet),var(--bg-navy) 75%);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    overflow:hidden;
+  }
+  .video-frame video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:none; background:#000; }
+  .video-frame img.poster-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .video-frame .initials{
+    font-family:var(--font-display); font-size:54px; color:rgba(255,255,255,.5); letter-spacing:.05em;
+  }
+  .play-btn{
+    position:relative; z-index:3;
+    width:62px; height:62px; border-radius:50%;
+    background:rgba(255,255,255,.14);
+    border:1.5px solid rgba(255,255,255,.5);
+    backdrop-filter:blur(6px);
+    display:flex; align-items:center; justify-content:center;
+    transition:transform .25s ease, background .25s ease;
+  }
+  .video-frame:hover .play-btn{ transform:scale(1.08); background:rgba(255,122,69,.85); border-color:var(--flame); }
+  .play-btn svg{ width:20px; height:20px; margin-left:3px; fill:var(--white); }
+  .video-frame.playing .play-btn{ display:none; }
+  .video-frame.playing video{ display:block; }
+  .video-frame .badge-soon{
+    position:absolute; bottom:12px; left:12px; z-index:3;
+    background:rgba(10,11,31,.75); border:1px solid rgba(255,255,255,.2);
+    font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+    padding:6px 12px; border-radius:999px; color:var(--ink-muted);
+    display:none;
+  }
+  .video-frame.no-video .badge-soon{ display:inline-flex; }
+  .video-frame.no-video .play-btn{ display:none; }
+
+  .person-info{ padding:20px 22px 24px; }
+  .person-role{ font-size:11.5px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:var(--flame); margin-bottom:6px; }
+  .person-name{ font-family:var(--font-display); font-size:23px; letter-spacing:.02em; }
+
+  #preletores{ background:var(--bg-void); }
+  #cantores{ background:linear-gradient(180deg,#0d0f2c, var(--bg-void)); }
+
+  /* Local */
+  #local{ background:var(--bg-void); }
+  .local-wrap{
+    display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:center;
+  }
+  @media(max-width:860px){ .local-wrap{ grid-template-columns:1fr; } }
+  .local-card{
+    background:var(--bg-navy);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:var(--radius-md);
+    padding:34px;
+  }
+  .local-address{ font-size:20px; font-weight:700; line-height:1.5; margin:14px 0 22px; }
+  .map-frame{
+    border-radius:var(--radius-md);
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.1);
+    aspect-ratio:4/3;
+  }
+  .map-frame iframe{ width:100%; height:100%; border:0; filter:grayscale(.15) contrast(1.05); }
+
+  /* Footer / liderança */
+  footer{
+    background:var(--bg-navy);
+    padding:70px 0 34px;
+    border-top:1px solid rgba(255,255,255,.06);
+  }
+  .foot-grid{
+    display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:40px;
+    margin-bottom:48px;
+  }
+  @media(max-width:820px){ .foot-grid{ grid-template-columns:1fr; gap:34px; } }
+  .foot-logo{ display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+  .foot-logo .mark{ width:46px; height:46px; }
+  .foot-logo b{ font-family:var(--font-display); font-size:20px; letter-spacing:.03em; }
+  .foot-addr{ color:var(--ink-muted); font-size:14px; line-height:1.6; max-width:280px; }
+  .foot-col h4{ font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--lavender); margin-bottom:16px; font-weight:800; }
+  .foot-col ul li{ font-size:14.5px; color:var(--ink-muted); margin-bottom:11px; line-height:1.5; }
+  .foot-col ul li b{ color:var(--white); display:block; font-weight:700; }
+  .foot-bottom{
+    border-top:1px solid rgba(255,255,255,.08);
+    padding-top:26px;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+    font-size:12.5px; color:var(--ink-muted);
+  }
+
+  /* reveal on scroll */
+  .reveal{ opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important; }
+  }
+
+  :focus-visible{ outline:2px solid var(--flame); outline-offset:3px; }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="container">
+    <nav>
+      <a href="#top" class="brand">
+        <img class="mark" src="img/logo.png" alt="Logo da igreja">
+        AD.BELÉM 57
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#programacao">Programação</a></li>
+        <li><a href="#preletores">Preletores</a></li>
+        <li><a href="#cantores">Cantores</a></li>
+        <li><a href="#local">Local</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="#local" class="btn btn-ghost">Como chegar</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">☰</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="container hero-inner">
+    <span class="eyebrow">
+      <svg class="flame" viewBox="0 0 48 48" fill="var(--flame)"><path d="M24 6c4 5-1 7-1 11 0 3 2 4 2 4s5-2 5-8c3 3 4 7 4 10 0 6-5 11-10 11s-10-5-10-11c0-6 4-10 6-13 1-1.5 2.5-3 4-4z"/></svg>
+      AD Belém 57 · Ministério do Belém São Paulo
+    </span>
+    <h1>UMADEB<br>57</h1>
+    <div class="subtitle">ENCONTRO&nbsp;SETORIAL</div>
+
+    <div class="hero-badges">
+      <span class="pill date">14, 15 e 16 de Agosto</span>
+    </div>
+    <div class="schedule-row">
+      <span><b>Sexta</b> 19h</span>
+      <span>·</span>
+      <span><b>Sábado</b> 18h</span>
+      <span>·</span>
+      <span><b>Domingo</b> 18h</span>
+    </div>
+
+    <div class="hero-ctas">
+      <a href="#programacao" class="btn btn-primary">Ver programação</a>
+      <a href="#local" class="btn btn-ghost">Como chegar</a>
+    </div>
+
+    <div class="countdown" id="countdown">
+      <div class="box"><div class="num" id="cd-dias">00</div><div class="lbl">dias</div></div>
+      <div class="box"><div class="num" id="cd-horas">00</div><div class="lbl">horas</div></div>
+      <div class="box"><div class="num" id="cd-min">00</div><div class="lbl">min</div></div>
+      <div class="box"><div class="num" id="cd-seg">00</div><div class="lbl">seg</div></div>
+    </div>
+  </div>
+  <div class="scroll-cue"></div>
+</section>
+
+<section id="programacao">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">
+        <svg class="flame" viewBox="0 0 48 48" fill="var(--flame)"><path d="M24 6c4 5-1 7-1 11 0 3 2 4 2 4s5-2 5-8c3 3 4 7 4 10 0 6-5 11-10 11s-10-5-10-11c0-6 4-10 6-13 1-1.5 2.5-3 4-4z"/></svg>
+        Programação
+      </span>
+      <h2 class="section-title">Três noites,<br>um só propósito</h2>
+      <p class="section-lede">Adoração, Palavra e comunhão reunindo a UMADEB 57 na AD Belém 57.</p>
+    </div>
+
+    <div class="prog-grid">
+      <div class="prog-card reveal">
+        <div class="prog-day">Dia 1</div>
+        <div class="prog-date">Sexta, 14/08</div>
+        <div class="prog-time">19h</div>
+        <p class="prog-desc">Abertura do Encontro Setorial, com louvor e ministração da Palavra.</p>
+      </div>
+      <div class="prog-card reveal">
+        <div class="prog-day">Dia 2</div>
+        <div class="prog-date">Sábado, 15/08</div>
+        <div class="prog-time">18h</div>
+        <p class="prog-desc">Noite de adoração e Palavra, com participação especial dos preletores.</p>
+      </div>
+      <div class="prog-card reveal">
+        <div class="prog-day">Dia 3</div>
+        <div class="prog-date">Domingo, 16/08</div>
+        <div class="prog-time">18h</div>
+        <p class="prog-desc">Encerramento do Encontro Setorial UMADEB 57, celebrando tudo o que Deus fez.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="preletores">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">
+        <svg class="flame" viewBox="0 0 48 48" fill="var(--flame)"><path d="M24 6c4 5-1 7-1 11 0 3 2 4 2 4s5-2 5-8c3 3 4 7 4 10 0 6-5 11-10 11s-10-5-10-11c0-6 4-10 6-13 1-1.5 2.5-3 4-4z"/></svg>
+        Palavra
+      </span>
+      <h2 class="section-title">Preletores</h2>
+      <p class="section-lede">Conheça quem vai ministrar a Palavra nas três noites do encontro.</p>
+    </div>
+    <div class="people-grid" id="grid-preletores"></div>
+  </div>
+</section>
+
+<section id="cantores">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">
+        <svg class="flame" viewBox="0 0 48 48" fill="var(--flame)"><path d="M24 6c4 5-1 7-1 11 0 3 2 4 2 4s5-2 5-8c3 3 4 7 4 10 0 6-5 11-10 11s-10-5-10-11c0-6 4-10 6-13 1-1.5 2.5-3 4-4z"/></svg>
+        Louvor
+      </span>
+      <h2 class="section-title">Cantores</h2>
+      <p class="section-lede">Quem vai conduzir a adoração em cada noite do UMADEB 57.</p>
+    </div>
+    <div class="people-grid" id="grid-cantores"></div>
+  </div>
+</section>
+
+<section id="local">
+  <div class="container">
+    <div class="local-wrap">
+      <div class="local-card reveal">
+        <span class="eyebrow">
+          <svg class="flame" viewBox="0 0 48 48" fill="var(--flame)"><path d="M24 6c4 5-1 7-1 11 0 3 2 4 2 4s5-2 5-8c3 3 4 7 4 10 0 6-5 11-10 11s-10-5-10-11c0-6 4-10 6-13 1-1.5 2.5-3 4-4z"/></svg>
+          Local
+        </span>
+        <h2 class="section-title" style="font-size:clamp(30px,4vw,42px);">AD.Belém 57</h2>
+        <div class="local-address">Av. Inocêncio Pires de Oliveira, 225<br>Caucaia do Alto</div>
+        <a class="btn btn-primary" target="_blank" rel="noopener"
+           href="https://www.google.com/maps/dir/?api=1&destination=Av.+Inoc%C3%AAncio+Pires+de+Oliveira+225+Caucaia+do+Alto">
+           Traçar rota até o local
+        </a>
+      </div>
+      <div class="map-frame reveal">
+        <iframe
+          src="https://www.google.com/maps?q=Av.+Inoc%C3%AAncio+Pires+de+Oliveira+225+Caucaia+do+Alto&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Mapa - AD Belém 57"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">
+          <img class="mark" src="img/logo.png" alt="Logo da igreja">
+          <b>AD.BELÉM 57</b>
+        </div>
+        <p class="foot-addr">Av. Inocêncio Pires de Oliveira, 225 — Caucaia do Alto<br><br>Encontro Setorial UMADEB 57 · 14, 15 e 16 de Agosto</p>
+      </div>
+      <div class="foot-col">
+        <h4>Liderança</h4>
+        <ul>
+          <li><b>José Wellington B. Costa</b>Pr. Presidente</li>
+          <li><b>José Wellington Junior</b>Pr. Vice Presidente</li>
+          <li><b>Eduardo Ramos</b>Pr. Setorial</li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Coordenação</h4>
+        <ul>
+          <li><b>Pr. Leus W. Marinho</b>Coordenador Miniterial</li>
+          <li><b>Pr. Kleber Gustavo</b>Coordenador Oeste</li>
+          <li><b>Pr. Junior Ulian</b>Coordenador Local</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 AD.Belém 57 — Encontro Setorial UMADEB 57</span>
+      <span>Feito com fé, para a mocidade.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // ---------- Nav scroll state ----------
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 30);
+  });
+
+  // ---------- Mobile menu ----------
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // ---------- Countdown ----------
+  // Ajuste aqui a data/hora do primeiro dia do evento, se precisar.
+  const eventDate = new Date('2026-08-14T19:00:00-03:00').getTime();
+  function tick(){
+    const now = Date.now();
+    let diff = eventDate - now;
+    if (diff < 0) diff = 0;
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-dias').textContent  = String(d).padStart(2,'0');
+    document.getElementById('cd-horas').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-min').textContent   = String(m).padStart(2,'0');
+    document.getElementById('cd-seg').textContent   = String(s).padStart(2,'0');
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  // ---------- Elenco: preletores e cantores ----------
+  // Para publicar o vídeo de cada pessoa, coloque um arquivo chamado
+  // "video.mp4" (e opcionalmente "capa.jpg") dentro da pasta correspondente
+  // em /videos/preletores/<slug>/ ou /videos/cantores/<slug>/
+  const elenco = {
+    preletores: [
+      { slug:'anselmo-dantas',      nome:'Pr. Anselmo Dantas',      papel:'Preletor'  },
+      { slug:'anderson-cavalcante', nome:'Pr. Anderson Cavalcante', papel:'Preletor'  },
+      { slug:'isabella-garcia',     nome:'Isabella Garcia',         papel:'Preletora' },
+    ],
+    cantores: [
+      { slug:'michelle-delfino',  nome:'Michelle Delfino',  papel:'Cantora' },
+      { slug:'matheus-henrique', nome:'Matheus Henrique',  papel:'Cantor'  },
+      { slug:'marcos-rodrigues', nome:'Marcos Rodrigues',  papel:'Cantor'  },
+    ]
+  };
+
+  function iniciais(nome){
+    return nome.replace(/^(Pr\.|Pra\.)\s*/,'').split(' ').map(p=>p[0]).slice(0,2).join('').toUpperCase();
+  }
+
+  function criarCard(categoria, pessoa){
+    const base = `videos/${categoria}/${pessoa.slug}/`;
+    const card = document.createElement('div');
+    card.className = 'person-card reveal';
+
+    const frame = document.createElement('div');
+    frame.className = 'video-frame';
+
+    const posterImg = document.createElement('img');
+    posterImg.className = 'poster-img';
+    posterImg.alt = pessoa.nome;
+    posterImg.src = base + 'capa.jpg';
+    posterImg.style.display = 'none';
+    posterImg.onload = () => { posterImg.style.display = 'block'; initialsEl.style.display = 'none'; };
+    posterImg.onerror = () => { posterImg.style.display = 'none'; };
+
+    const initialsEl = document.createElement('div');
+    initialsEl.className = 'initials';
+    initialsEl.textContent = iniciais(pessoa.nome);
+
+    const playBtn = document.createElement('div');
+    playBtn.className = 'play-btn';
+    playBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+
+    const badgeSoon = document.createElement('span');
+    badgeSoon.className = 'badge-soon';
+    badgeSoon.textContent = 'Vídeo em breve';
+
+    const video = document.createElement('video');
+    video.setAttribute('playsinline','');
+    video.controls = true;
+    video.preload = 'metadata';
+    const source = document.createElement('source');
+    source.src = base + 'video.mp4';
+    source.type = 'video/mp4';
+    video.appendChild(source);
+
+    video.addEventListener('error', () => frame.classList.add('no-video'));
+    source.addEventListener('error', () => frame.classList.add('no-video'));
+
+    frame.append(posterImg, initialsEl, playBtn, badgeSoon, video);
+
+    frame.addEventListener('click', () => {
+      if (frame.classList.contains('no-video') || frame.classList.contains('playing')) return;
+      frame.classList.add('playing');
+      video.play().catch(() => frame.classList.add('no-video'));
+    });
+
+    const info = document.createElement('div');
+    info.className = 'person-info';
+    info.innerHTML = `<div class="person-role">${pessoa.papel}</div><div class="person-name">${pessoa.nome}</div>`;
+
+    card.append(frame, info);
+    return card;
+  }
+
+  const gridPreletores = document.getElementById('grid-preletores');
+  elenco.preletores.forEach(p => gridPreletores.appendChild(criarCard('preletores', p)));
+
+  const gridCantores = document.getElementById('grid-cantores');
+  elenco.cantores.forEach(p => gridCantores.appendChild(criarCard('cantores', p)));
+
+  // ---------- Scroll reveal ----------
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold:.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+})();
+</script>
+</body>
+</html>
