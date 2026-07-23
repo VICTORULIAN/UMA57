@@ -8,6 +8,7 @@ com espaço para os vídeos de cada cantor e cada preletor.
 ```
 umadeb57/
 ├── index.html                 -> o site (abrir este arquivo no navegador)
+├── img/                        -> logos oficiais (AD Belém + UMADEB)
 ├── videos/
 │   ├── preletores/
 │   │   ├── anselmo-dantas/
@@ -17,7 +18,42 @@ umadeb57/
 │       ├── michelle-delfino/
 │       ├── matheus-henrique/
 │       └── marcos-rodrigues/
+└── patrocinadores/             -> logos das empresas/comércios apoiadores
 ```
+
+## Paleta de cores oficial (Manual de Identidade Visual UMADEB SP 2K26)
+
+| Cor | Hex |
+|---|---|
+| Preto | `#181818` |
+| Vinho | `#7E2A16` |
+| Vermelho | `#F30103` |
+| Bege | `#CEB49A` |
+| Creme / off-white | `#ECE2E0` |
+
+Todas as cores do site ficam no topo do `<style>`, dentro de `:root { ... }`
+no `index.html` — dá pra ajustar qualquer tom por ali.
+
+## Patrocinadores (carrossel automático no final da página)
+
+Coloque as imagens dentro de `patrocinadores/`, numeradas em sequência:
+
+```
+patrocinadores/01.png
+patrocinadores/02.jpg
+patrocinadores/03.png
+```
+
+Aceita `.png`, `.jpg`, `.jpeg` ou `.webp`, em **qualquer tamanho ou
+proporção** — o site encaixa a imagem inteira dentro de um card padrão,
+sem cortar nem distorcer. O carrossel desliza sozinho e para se o mouse
+passar por cima.
+
+**Importante:** os números precisam ser seguidos (01, 02, 03...), sem
+pular nenhum — o site carrega em ordem e para no primeiro número que não
+encontrar. Para adicionar um novo patrocinador, salve a próxima imagem
+com o próximo número da sequência. Se a pasta estiver vazia, essa seção
+mostra "Patrocinadores em breve" automaticamente.
 
 ## Como adicionar os vídeos
 
